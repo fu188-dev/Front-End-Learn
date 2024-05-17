@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title><input type="button"></title>
+  </head>
+  <body>
+    <h1>type="button"</h1>
+    <section>
+        <h2>有 value</h2>
+        <input type="button" value="点我"/>
+    </section>
+    <section>
+      <h2>无 value</h2>
+      <input type="button"/>
+    </section>
+    <section>
+      <h2>简单按钮</h2>
+      <h2>为按钮添加键盘快捷方式（s键）</h2>
+      <input type="button" class="easy" value="开动机器" accesskey="s"/>
+      <p class="p">机器已经停下了。</p>
+    </section>
+    <section>
+      <h2>禁用或启用按钮</h2>
+      <input type="button" value="禁用" disabled />
+      <input type="button" value="启用" !disabled />
+      <input type="button" value="启用" />
+    </section>
+    <section>
+      <h2>设置禁用属性</h2>
+      <input type="button" class="set" value="已启用" />
+    </section>
+    <section>
+      <h2>继承禁用属性（设置一组元素为禁用状态）</h2>
+      <fieldset class="box">
+        <input type="button" class="btn" value="点击禁用所有按钮" />
+        <input type="button" class="btn" value="按钮 2" />
+        <input type="button" class="btn" value="按钮 3" />
+      </fieldset>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
