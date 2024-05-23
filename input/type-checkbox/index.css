@@ -1,0 +1,19 @@
+body, div, section, h1, h2, label, input {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: bisque;
+}
+section {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    border: 1px dashed rgba(0, 0, 0, .3);
+}
+h1 {
+    text-align: center;
+}
+ul li {
+    list-style: none;
+}

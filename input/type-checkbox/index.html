@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title><input type="checkbox"></title>
+  </head>
+  <body>
+    <h1>type="checkbox"</h1>
+    <section>
+      <h2>value</h2>
+      <form>
+        <div>
+          <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" />
+          <label for="subscribeNews">订阅报纸</label>
+        </div>
+        <button type="submit">订阅</button>
+      </form>
+    </section>
+    <section>
+      <h2>checked、复选框组</h2>
+      <form>
+        <div>选择你的兴趣</div>
+        <div>
+          <input type="checkbox" id="coding" name="interest" value="coding" checked />
+          <label for="coding">代码</label>
+        </div>
+        <div>
+          <input type="checkbox" id="music" name="interest" value="music" />
+          <label for="music">音乐</label>
+        </div>
+        <button type="submit">提交</button>
+      </form>
+    </section>
+    <section>
+      <h2>中间状态-indeterminate=true</h2>
+      <div>
+        <input type="checkbox" id="all" name="all" value="all" />
+        <label for="all">选择状态（全选）</label>
+        <ul>
+          <li>
+            <input type="checkbox" id="learn" name="interest" value="learn" />
+            <label for="learn">学习</label>
+          </li>
+          <li>
+            <input type="checkbox" id="sport" name="interest" value="sport" />
+            <label for="sport">运动</label>
+          </li>
+          <li>
+            <input type="checkbox" id="games" name="interest" value="games" />
+            <label for="games">游戏</label>
+          </li>
+          <li>
+            <input type="checkbox" id="song" name="interest" value="song" />
+            <label for="song">唱歌</label>
+          </li>
+        </ul>   
+      </div>       
+    </section>    
+  </body>
+  <script src="index.js"></script>
+</html>
