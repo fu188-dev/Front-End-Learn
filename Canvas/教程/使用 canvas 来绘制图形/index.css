@@ -14,21 +14,19 @@ section {
 h1 {
     text-align: center;
 }
-
-
-.visible {
-    visibility: visible;
-}
-.not-visible {
-    visibility: hidden;
-}
-.collapse {
-    visibility: collapse;
+dt {
+  font-weight: bold;
 }
 
-table {
-    border: 1px solid black;
+dl,
+dd {
+  font-size: 0.9em;
 }
-td {
-    border: 1px solid green;
+
+dd {
+  margin-bottom: 1em;
+  text-indent: 2em;
+}
+canvas {
+    border: 1px solid gray;
 }

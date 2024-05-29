@@ -15,20 +15,6 @@ h1 {
     text-align: center;
 }
 
-
-.visible {
-    visibility: visible;
-}
-.not-visible {
-    visibility: hidden;
-}
-.collapse {
-    visibility: collapse;
-}
-
-table {
-    border: 1px solid black;
-}
-td {
-    border: 1px solid green;
+canvas {
+    border: 1px solid gray;
 }

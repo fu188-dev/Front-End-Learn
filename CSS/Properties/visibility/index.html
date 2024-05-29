@@ -7,11 +7,30 @@
     <title>visibility</title>
 </head>
 <body>
-    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" title="Canvas API" target="_blank">Canvas API</a></h1>
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/visibility" target="_blank" title="visibility">visibility</a></h1>
     <section>
-        <canvas id="canvas"></canvas>
+        <p class="visible">第一段是可见的。</p>
+        <p class="not-visible">第二段是不可见的。</p>
+        <p>第三段是可见的。注意第二段仍然占有空间。</p>
     </section>
-
+    <section>
+        <table>
+            <tr>
+                <td>one</td>
+                <td class="collapse">two</td>
+                <td>three</td>
+            </tr>
+            <tr class="collapse">
+                <td>four</td>
+                <td>five</td>
+                <td>six</td>
+            </tr>
+            <tr>
+                <td>seven</td>
+                <td>eight</td>
+                <td>nine</td>
+            </tr>
+        </table>
+    </section>
 </body>
-<script src="./index.css"></script>
 </html>

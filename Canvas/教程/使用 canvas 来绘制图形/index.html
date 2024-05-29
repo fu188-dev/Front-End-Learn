@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>使用 canvas 来绘制图形</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes" title="使用 canvas 来绘制图形" target="_blank">使用 canvas 来绘制图形</a></h1>
+    <section>
+      <h2>绘制矩形</h2>
+      <dl>
+        <dt>fillRect(x, y, width, height)</dt>
+        <dd>绘制填充矩形</dd>
+
+        <dt>strokeRect(x, y, width, height)</dt>
+        <dd>绘制矩形边框</dd>
+
+        <dt>clearRect(x, y, width, height)</dt>
+        <dd>清除指定矩形区域，让清除部分完全透明</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>绘制路径</h2>
+      <dl>
+        <dt>beginPath()</dt>
+        <dd>新建一条路径，图形绘制命令被指向到路径上生成路径。</dd>
+
+        <dt>closePath()</dt>
+        <dd>闭合路径，图形绘制命令又重新指向到上下文中。</dd>
+
+        <dt>stroke()</dt>
+        <dd>用线条绘制图形轮廓</dd>
+
+        <dt>fill()</dt>
+        <dd>通过填充路径的内容区域生成实心的图形。</dd>
+      </dl>
+
+      <h2>移动笔触</h2>
+      <dl>
+        <dt>moveTo(x, y)</dt>
+        <dd>将笔触移动到指定的坐标 x 以及 y 上，一般用于<strong>设置起点。</strong></dd>
+        <dt>lineTo(x, y)</dt>
+        <dd>绘制一条到指定 x 和 y 位置的直线。</dd>
+      </dl>      
+      <h2>圆弧</h2>
+      <dl>
+        <dt>arc(x, y, radius, startAngle, endAngle, anticlockwise)</dt>
+        <dd>画一个以（x,y）为圆心的以 radius 为半径的圆弧（圆），从 startAngle 开始到 endAngle 结束，按照 anticlockwise 给定的方向（默认为顺时针）来生成。</dd>
+        <dt>arcTo(x1, y1, x2, y2, radius)</dt>
+        <dd>根据给定的控制点和半径画一段圆弧，再以直线连接两个控制点.</dd>
+      </dl>      
+      <h2>二次贝塞尔曲线\三次贝塞尔曲线</h2>
+      <dl>
+        <dt>quadraticCurveTo(cp1x, cp1y, x, y)</dt>
+        <dd>cp1x, cp1y是控制点坐标, x,y为结束点</dd>
+        <dt>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</dt>
+        <dd>cp1x, cp1y是控制点1的坐标, cp2x, cp2y是控制点2的坐标, x,y为结束点</dd>
+      </dl>  
+    </section>
+    <section>
+      <canvas width="400" height="400" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      <canvas width="400" height="400" id="two">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
