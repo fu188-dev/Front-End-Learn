@@ -74,6 +74,10 @@ function cir() {
       ctx.moveTo(200, 50);
       ctx.quadraticCurveTo(250, 25, 300, 50);
       ctx.stroke();
+
+
+      ctx.rect(200, 10, 50, 50);
+      ctx.stroke();
   
 
     } else {
