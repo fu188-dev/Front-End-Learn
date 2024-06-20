@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>应用样式和色彩</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors" title="应用样式和色彩" target="_blank">应用样式和色彩</a></h1>
+    <section>
+      <h2>色彩</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillStyle" title="fillStyle = color" target="_blank">fillStyle = color</a></dt>
+        <dd>设置图形的填充颜色。<strong>默认颜色为黑色#000000。</strong>颜色值还可以是渐变或者图案</dd>
+
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeStyle" title="strokeStyle = color" target="_blank">strokeStyle = color</a></dt>
+        <dd>设置图形轮廓的颜色。<strong>默认颜色为黑色#000000。</strong>颜色值还可以是渐变或者图案</dd>
+        
+        <p>颜色值如下：</p>
+        <p>ctx.fillStyle = "orange";</p>
+        <p>ctx.fillStyle = "#FFA500";</p>
+        <p>ctx.fillStyle = "rgb(255,165,0)";</p>
+        <p>ctx.fillStyle = "rgba(255,165,0,1)";</p>
+      </dl>
+    </section>
+    <section>
+      <h2>透明度</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalAlpha" title="globalAlpha = transparencyValue" target="_blank">globalAlpha = transparencyValue</a></dt>
+        <dd>这个属性影响到 canvas 里所有图形的透明度，和 CSS 里面的 opacity 属性一样。</dd>
+        <dd>值的范围是 0.0（完全透明） ~ 1.0（完全不透明），默认是1.0。</dd>
+        <dd>建议用 rgba 进行不透明度的设置</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>线型</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineWidth" title="lineWidth = value" target="_blank">lineWidth = value</a></dt>
+        <dd>设置线条宽度。必须为正数，默认值是 1.0。</dd>
+        <dd>
+          就是在路径的两边各绘制线宽的一半，例如给的宽是10，就会两边各自占5。
+          <strong>这样就会导致线条的位置不准确的问题。</strong>
+        </dd>
+
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap" title="lineCap = type" target="_blank">lineCap = type</a></dt>
+        <dd>设置线条末端样式。值如下：</dd>
+        <dd><b>butt（默认值）：</b>方角。</dd>
+        <dd><b>round：</b>圆角，末端会多出一截。</dd>
+        <dd><b>square：</b>方角，末端会多出一截。</dd>
+
+
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin" title="lineJoin = type" target="_blank">lineJoin = type</a></dt>
+        <dd>设定线条与线条间结合处的样式。值如下：</dd>
+        <dd><b>miter（默认值）：</b>连接处是尖的，看着棱角分明。也可以说是边缘被延伸交汇于一点上。</dd>
+        <dd><b>round：</b>连接处是圆角的，看着比较舒服。</dd>
+        <dd><b>bevel：</b>连接处是平的。</dd>
+
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/miterLimit" title="miterLimit = value" target="_blank">miterLimit = value</a></dt>
+        <dd>限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。</dd>
+
+
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getLineDash" title="getLineDash()" target="_blank">getLineDash()</a></dt>        
+        <dd>返回一个包含当前虚线样式，长度为非负偶数的数组。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash" title="setLineDash()" target="_blank">setLineDash()</a></dt>        
+        <dd>设置当前虚线样式。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset" title="lineDashOffset = value" target="_blank">lineDashOffset = value</a></dt>        
+        <dd>设置虚线样式的起始偏移量。</dd>
+
+      </dl>
+    </section>
+   
+    <section>
+      <canvas width="400" height="800" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
