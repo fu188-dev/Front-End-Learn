@@ -1,3 +1,5 @@
+var offset = 0;
+
 function draw() {
   // 检查支持性
   var canvas = document.getElementById("canvas");
@@ -117,12 +119,64 @@ function draw() {
 
 
     // 虚线示例，使用 setLineDash 和 lineDashOffset 制定。
+    ctx.lineWidth = 1;
+    ctx.setLineDash([20, 30]);
+    ctx.beginPath();
+    ctx.moveTo(190, 350);
+    ctx.lineTo(390, 350);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.lineDashOffset = -10;
+    ctx.moveTo(190, 380);
+    ctx.lineTo(390, 380);
+    ctx.stroke();
+
+    march();
+    function march() {
+      offset--;
+      if (offset < -16) {
+        offset = 0;
+      }
+      drawOne();
+      setTimeout(march, 20);
+    }
+    function drawOne() {
+      ctx.strokeStyle = "black";
+      ctx.clearRect(189, 399, 102, 102);
+      ctx.setLineDash([4, 2]);
+      ctx.lineDashOffset = -offset;
+      ctx.strokeRect(190, 400, 100, 100);
+    }
+
+    ctx.setLineDash([0, 0]);
+    // createLinearGradient（线性渐变） 示例
+    const lingrad = ctx.createLinearGradient(200, 510, 200, 610);
+    lingrad.addColorStop(0, "#00ABEB");
+    lingrad.addColorStop(0.5, "#FFFFFF");
+    lingrad.addColorStop(1, "#26C000");
+
+    const lingrad2 = ctx.createLinearGradient(220, 530, 220, 570);
+    lingrad2.addColorStop(0, "#0F0");
+    lingrad2.addColorStop(1, "rgba(0, 0, 0, 0)"); // 设置为透明度 rgba
+    // lingrad2.addColorStop(1, "#00F");
+
+    ctx.fillStyle = lingrad; // 设置背景颜色渐变
+    ctx.fillRect(200, 510, 100, 100);
+
+    ctx.strokeStyle = lingrad2; // 设置边框颜色渐变
+    ctx.strokeRect(220, 530, 40, 40);
 
 
+    // createRadialGradient（径向渐变） 示例
+
+    
   } else {
     alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
   }
 }
+
+
 function two() {
   // 检查支持性
   var canvas = document.getElementById("two");

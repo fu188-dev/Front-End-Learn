@@ -35,6 +35,9 @@
     </section>
     <section>
       <h2>线型</h2>
+      <p>
+        <a href="https://blog.csdn.net/weixin_44178305/article/details/122419788" title="博客" target="_blank">可以看这里的解析</a>
+      </p>
       <dl>
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineWidth" title="lineWidth = value" target="_blank">lineWidth = value</a></dt>
         <dd>设置线条宽度。必须为正数，默认值是 1.0。</dd>
@@ -62,11 +65,33 @@
 
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getLineDash" title="getLineDash()" target="_blank">getLineDash()</a></dt>        
         <dd>返回一个包含当前虚线样式，长度为非负偶数的数组。</dd>
-        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash" title="setLineDash()" target="_blank">setLineDash()</a></dt>        
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash" title="setLineDash(segments)" target="_blank">setLineDash(segments)</a></dt>        
         <dd>设置当前虚线样式。</dd>
+        <dd>segments: 一个Array数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。如果数组元素的数量是奇数，数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。</dd>
+        <img src="./images/one.png" alt="">
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset" title="lineDashOffset = value" target="_blank">lineDashOffset = value</a></dt>        
         <dd>设置虚线样式的起始偏移量。</dd>
+        <dd>正数就是向左偏移，负数是向右偏移</dd>
 
+      </dl>
+    </section>
+    <section>
+      <h2>渐变</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createLinearGradient" title="createLinearGradient(x1, y1, x2, y2)" target="_blank">createLinearGradient(x1, y1, x2, y2)</a></dt>
+        <dd>创建线性渐变。</dd>
+        <dd>参数表示渐变的起点（x1，y1）和终点（x2， y2）。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createRadialGradient" title="createRadialGradient(x1, y1, r1, x2, y2, r2)" target="_blank">createRadialGradient(x1, y1, r1, x2, y2, r2)</a></dt>
+        <dd>创建径向渐变。</dd>
+        <dd>前三个定义一个以 (x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasGradient/addColorStop" title="gradient.addColorStop(position, color)" target="_blank">gradient.addColorStop(position, color)</a></dt>
+        <dd>给渐变上色。</dd>
+        <dd>position：0.0 ~ 1.0之间的一个数值！表示渐变中颜色所在的相对位置。例如，0.5 表示颜色会出现在正中间。</dd>
+        <dd>color：颜色值，#FFF、rgba等等。</dd>
+        <dd>你可以添加任意多个的色标，例如：</dd>
+        <dd>var lineargradient = ctx.createLinearGradient(0, 0, 150, 150);</dd>
+        <dd>lineargradient.addColorStop(0, "white");</dd>
+        <dd>lineargradient.addColorStop(1, "black");</dd>
       </dl>
     </section>
    
