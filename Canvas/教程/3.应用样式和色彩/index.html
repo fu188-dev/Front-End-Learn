@@ -94,9 +94,18 @@
         <dd>lineargradient.addColorStop(1, "black");</dd>
       </dl>
     </section>
-   
     <section>
-      <canvas width="400" height="800" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      <h2>图案样式 Patterns</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createPattern" title="createPattern(image, type)" target="_blank">createPattern(image, type)</a></dt>
+        <dd>image：可以是一个 Image 对象的引用，或者是另一个 canvas 对象。</dd>
+        <dd>type：repeat、repeat-x、repeat-y、no-repeat</dd>
+
+        <dd><strong>用 canvas 对象作为 Image 参数在 Firefox 1.5（Gecko 1.8）中是无效的。</strong></dd>
+      </dl>
+    </section>
+    <section>
+      <canvas width="800" height="800" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
     </section>
   </body>
   <script src="index.js"></script>

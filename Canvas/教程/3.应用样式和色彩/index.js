@@ -151,7 +151,7 @@ function draw() {
 
     ctx.setLineDash([0, 0]);
     // createLinearGradient（线性渐变） 示例
-    const lingrad = ctx.createLinearGradient(200, 510, 200, 610);
+    const lingrad = ctx.createLinearGradient(200, 510, 300, 510);
     lingrad.addColorStop(0, "#00ABEB");
     lingrad.addColorStop(0.5, "#FFFFFF");
     lingrad.addColorStop(1, "#26C000");
@@ -169,6 +169,39 @@ function draw() {
 
 
     // createRadialGradient（径向渐变） 示例
+    const radgrad = ctx.createRadialGradient(320, 650, 4, 330, 660, 30);
+    radgrad.addColorStop(0, "#A7D30C");
+    radgrad.addColorStop(0.9, "#019F62");
+    radgrad.addColorStop(1, "rgba(1,159,98, .1)");
+
+    ctx.fillStyle = radgrad;
+    ctx.fillRect(300, 630, 100, 100);
+
+
+    const radgrad2 = ctx.createRadialGradient(370, 700, 4, 360, 710, 30);
+    radgrad2.addColorStop(0, "#FFFFFF");
+    radgrad2.addColorStop(0.9, "#000000");
+    radgrad2.addColorStop(1, "rgba(1,159,98,0)");
+
+    ctx.fillStyle = radgrad2;
+    ctx.fillRect(300, 630, 100, 200);
+
+
+
+    // createPattern 示例
+    const img = new Image();
+    img.src = "./images/canvas_createpattern.png";
+    // 使用 onload 来确保设置图案之前图像已经加载完毕。
+    img.onload = function() {
+      // repeat：铺满整个容器；
+      // repeat-x：第一行会显示；
+      // repeat-y：不展示图片；
+      // no-repeat：不展示图片了；
+      const ptrn = ctx.createPattern(img, "repeat");
+      ctx.fillStyle = ptrn;
+      ctx.fillRect(400, 0, 300, 400);
+
+    };
 
     
   } else {
