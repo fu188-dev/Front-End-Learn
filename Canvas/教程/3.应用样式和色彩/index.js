@@ -203,6 +203,30 @@ function draw() {
 
     };
 
+
+    // 阴影示例
+    ctx.shadowOffsetX  = 4;
+    ctx.shadowOffsety  = 4;
+    ctx.shadowBlur  = 2;
+    ctx.shadowColor  = "rgba(255, 0, 0, .4)";
+
+    ctx.font = "30px Times New Roman";
+    ctx.fillStyle = "black";
+    ctx.fillText("阴影", 400, 450); // 这个将在下一章进行学习
+
+
+    // 填充规则示例
+    ctx.beginPath();
+    ctx.arc(400, 500, 15, 0, Math.PI * 2, true);
+    ctx.arc(400, 500, 30, 0, Math.PI * 2, true);
+    ctx.fillStyle = "red";
+    ctx.fill("nonzero"); // nonzero  evenodd
+
+    ctx.beginPath();
+    ctx.arc(500, 500, 15, 0, Math.PI * 2, true);
+    ctx.arc(500, 500, 30, 0, Math.PI * 2, true);
+    ctx.fillStyle = "red";
+    ctx.fill("evenodd"); // nonzero  evenodd
     
   } else {
     alert("你的浏览器不支持 canvas，请更换浏览器再使用。");

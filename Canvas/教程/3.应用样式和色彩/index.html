@@ -67,7 +67,7 @@
         <dd>返回一个包含当前虚线样式，长度为非负偶数的数组。</dd>
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setLineDash" title="setLineDash(segments)" target="_blank">setLineDash(segments)</a></dt>        
         <dd>设置当前虚线样式。</dd>
-        <dd>segments: 一个Array数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。如果数组元素的数量是奇数，数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。</dd>
+        <dd><strong>segments: </strong>一个Array数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。如果数组元素的数量是奇数，数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。</dd>
         <img src="./images/one.png" alt="">
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset" title="lineDashOffset = value" target="_blank">lineDashOffset = value</a></dt>        
         <dd>设置虚线样式的起始偏移量。</dd>
@@ -86,8 +86,8 @@
         <dd>前三个定义一个以 (x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆。</dd>
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasGradient/addColorStop" title="gradient.addColorStop(position, color)" target="_blank">gradient.addColorStop(position, color)</a></dt>
         <dd>给渐变上色。</dd>
-        <dd>position：0.0 ~ 1.0之间的一个数值！表示渐变中颜色所在的相对位置。例如，0.5 表示颜色会出现在正中间。</dd>
-        <dd>color：颜色值，#FFF、rgba等等。</dd>
+        <dd><strong>position：</strong>0.0 ~ 1.0之间的一个数值！表示渐变中颜色所在的相对位置。例如，0.5 表示颜色会出现在正中间。</dd>
+        <dd><strong>color：</strong>颜色值，#FFF、rgba等等。</dd>
         <dd>你可以添加任意多个的色标，例如：</dd>
         <dd>var lineargradient = ctx.createLinearGradient(0, 0, 150, 150);</dd>
         <dd>lineargradient.addColorStop(0, "white");</dd>
@@ -98,10 +98,41 @@
       <h2>图案样式 Patterns</h2>
       <dl>
         <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createPattern" title="createPattern(image, type)" target="_blank">createPattern(image, type)</a></dt>
-        <dd>image：可以是一个 Image 对象的引用，或者是另一个 canvas 对象。</dd>
-        <dd>type：repeat、repeat-x、repeat-y、no-repeat</dd>
+        <dd><strong>image：</strong>可以是一个 Image 对象的引用，或者是另一个 canvas 对象。</dd>
+        <dd><strong>type：</strong>repeat、repeat-x、repeat-y、no-repeat</dd>
 
         <dd><strong>用 canvas 对象作为 Image 参数在 Firefox 1.5（Gecko 1.8）中是无效的。</strong></dd>
+      </dl>
+    </section>
+    <section>
+      <h2>阴影</h2>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowOffsetX" title="shadowOffsetX = float" target="_blank">shadowOffsetX = float</a></dt>
+        <dd>阴影在 x 轴的延伸距离。默认为0，正数向右延伸，负数向左延伸。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowOffsetY" title="shadowOffsetY = float" target="_blank">shadowOffsetY = float</a></dt>
+        <dd>阴影在 y 轴的延伸距离。默认为0，正数向下延伸，负数向上延伸。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowBlur" title="shadowBlur = float" target="_blank">shadowBlur = float</a></dt>
+        <dd>设定阴影的模糊程度。默认为 0。值越大，越模糊。</dd>
+        <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowColor" title="shadowColor = color" target="_blank">shadowColor = color</a></dt>
+        <dd>设定阴影的颜色，默认是全透明的黑色。</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Canvas 填充规则</h2>
+      <dl>
+        <dd>
+          当我们用到 fill（或者 
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clip" title="clip" target="_blank">clip</a>
+          和 
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/isPointInPath" title="isPointinPath" target="_blank">isPointinPath</a>
+          ）
+          你可以选择一个填充规则，该填充规则根据某处在路径的外面或者里面来决定该处是否被填充，
+        </dd>
+        <dd>这对于自己于自己<strong>路径相交或者路径被嵌套</strong>的时候是有用的。</dd>
+        <dd>有如下两个值：</dd>
+        <dd>nonzero：默认值。填充路径的内部</dd>
+        <dd>evenodd：填充多个路径重合但未重叠的部分。</dd>
+        
       </dl>
     </section>
     <section>
