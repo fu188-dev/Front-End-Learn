@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>绘制文本</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Drawing_text" title="绘制文本" target="_blank">绘制文本</a></h1>
+    <section>
+      <h2>绘制文本</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillText" title="fillText(text, x, y[, maxWidth])" target="_blank">fillText(text, x, y[, maxWidth])</a></dt>
+          <dd>
+            在指定的 x,y 处填充指定的
+            <strong>文本</strong>
+            。绘制的最大宽度是可选的。
+          </dd>
+          <dd>如果设置了最大宽度，所有内容将会填充到宽度之内，不会超出此范围。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeText" title="strokeText(text, x, y[, maxWidth])" target="_blank">strokeText(text, x, y[, maxWidth])</a></dt>
+          <dd>
+            在指定的 x,y 处绘制
+            <strong>文本边框</strong>
+            。绘制的最大宽度是可选的。
+          </dd>
+          <dd>如果设置了最大宽度，所有内容将会填充到宽度之内，不会超出此范围。</dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>有样式的文本</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/font" title="font = value" target="_blank">font = value</a></dt>
+          <dd>
+            和 CSS 的 
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/font" title="font" target="_blank">font</a>
+            语法相同。默认是：10px sans-serif。
+          </dd>
+
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/textAlign" title="textAlign = value" target="_blank">textAlign = value</a></dt>
+          <dd>文本对齐方式。值包括：</dd>
+          <dd><strong>start</strong>：默认值。</dd>
+          <dd><strong>end</strong></dd>
+          <dd><strong>left</strong></dd>
+          <dd><strong>right</strong></dd>
+          <dd><strong>center</strong></dd>
+
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/textBaseline" title="textBaseline = value" target="_blank">textBaseline = value</a></dt>
+          <dd><strong>基线</strong>对齐方式。值包括：</dd>
+          <dd><strong>alphabetic</strong>：默认值。</dd>
+          <dd><strong>top</strong></dd>
+          <dd><strong>hanging</strong></dd>
+          <dd><strong>middle</strong></dd>
+          <dd><strong>bottom</strong></dd>
+
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/direction" title="direction = value" target="_blank">direction = value</a></dt>
+          <dd>文本方向。值包括：</dd>
+          <dd><strong>inherit</strong>：默认值。</dd>
+          <dd><strong>ltr</strong></dd>
+          <dd><strong>rtl</strong></dd>
+        </dl>
+        <canvas width="800" height="200" id="canvas2">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>  
+    <section>
+      <h2>预测量文本宽度</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/measureText" title="measureText(text)" target="_blank">measureText(text)</a></dt>
+          <dd>
+            将返回一个 
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/TextMetrics" title="TextMetrics" target="_blank">TextMetrics</a>             
+            对象。
+          </dd>
+          <dd>text：需要测量的字符串。</dd>
+          <dd>TextMetrics 对象会返回如下属性（属性都是<strong>只读</strong>的）：</dd>
+          <dd>width：字符串的宽度。double 类型。</dd>
+          <dd>actualBoundingBoxLeft：textAlign 标明的对齐点到文本矩形边界左侧的距离。double 类型。</dd>
+          <dd>actualBoundingBoxRight：textAlign 标明的对齐点到文本矩形边界右侧的距离。double 类型。</dd>
+          <dd>fontBoundingBoxAscent：textBaseline 标明的基线到到渲染文本的所有字体的矩形边界最顶部的距离。double 类型。</dd>
+          <dd>fontBoundingBoxDescent：textBaseline 标明的基线到到渲染文本的所有字体的矩形边界最底部的距离。double 类型。</dd>
+          <dd>actualBoundingBoxAscent：textBaseline 标明的基线到渲染文本的矩形边界顶部的距离。double 类型。</dd>
+          <dd>actualBoundingBoxDescent：textBaseline 标明的基线到渲染文本的矩形边界底部的距离。double 类型。</dd>
+          <dd>emHeightAscent：textBaseline 标明的基线到线框的 em 方块顶部的距离。double 类型。</dd>
+          <dd>emHeightDescent：textBaseline 标明的基线到线框的 em 方块底部的距离。double 类型。</dd>
+          <dd>hangingBaseline：textBaseline 标明的基线到线框的 hanging 基线的距离。double 类型。</dd>
+          <dd>alphabeticBaseline：textBaseline 标明的基线到线框的 alphabetic 基线的距离。double 类型。</dd>
+          <dd>ideographicBaseline：textBaseline 标明的基线到线框的 ideographic 基线的距离。double 类型。</dd>
+        </dl>
+        <canvas width="400" height="400" id="canvas3">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <div class="info"></div>
+      </div>
+    </section>    
+  </body>
+  <script src="index.js"></script>
+</html>
