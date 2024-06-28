@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>使用图像</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Using_images" title="使用图像" target="_blank">使用图像</a></h1>
+    <section>
+      <div>
+        <dl>
+          <dt>引入图像到 canvas 里需要以下两步基本操作：</dt>
+          <dd>1.获得一个指向 
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement" title="HTMLImageElement" target="_blank">HTMLImageElement</a>
+             的对象或者另一个 canvas 元素的引用作为源，也可以通过提供一个 URL 的方式来使用图片。
+          </dd>
+          <dd>2.使用 drawImage() 函数将图片绘制到画布上。</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>获得需要绘制的图片</h2>
+      <div>
+        <dl>          
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement" title="HTMLImageElement" target="_blank">HTMLImageElement</a></dt>
+          <dd>Image() 函数构造的，或者任何的 &lt;img&gt; 元素</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLVideoElement" title="HTMLVideoElement" target="_blank">HTMLVideoElement</a></dt>
+          <dd>用 &lt;video&gt; 元素作为图片源，你可以从视频中抓取当前帧作为一个图像。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement" title="HTMLCanvasElement" target="_blank">HTMLCanvasElement</a></dt>
+          <dd>可以使用另一个 &lt;canvas&gt; 元素作为图片源。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageBitmap" title="ImageBitmap" target="_blank">ImageBitmap</a></dt>
+          <dd>这是一个<strong>高性能的位图</strong>，可以<strong>低延迟</strong>地绘制，可以从上述的所有源以及其他几种源中生成。</dd>
+          <dd>可以使用另一个 &lt;canvas&gt; 元素作为图片源。</dd>
+
+          <dd>这些源统一由 CanvasImageSource 类型来引用。</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>获取相同页面内的图片</h2>
+      <div>
+        <dl>          
+          <dt>我们可以通过下列方法来获得与 canvas 相同页面内的图片的引用：</dt>
+          <dd>
+            1.<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/images" title="document.images" target="_blank"> document.images </a>
+            集合；
+          </dd>
+          <dd>
+            2.<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementsByTagName" title="document.getElementsByTagName()" target="_blank"> document.getElementsByTagName() </a>
+            方法；
+          </dd>
+          <dd>
+            3.如果你知道想使用的图片的 ID，可以用
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById" title="document.getElementById()" target="_blank"> document.getElementById() </a>
+            来获得这个图片；
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>使用其他域名下的图片</h2>
+      <div>
+        <dl>          
+          <dd>在 HTMLImageElement 上使用
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin" title="crossOrigin" target="_blank"> crossOrigin </a>
+            属性，可以请求加载其他域名上的图片。
+          </dd>
+          <dd>
+            如果图片的服务器允许跨域访问这个图片，那么你可以使用这个图片而不污染 canvas，否则使用这个图片将会
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_enabled_image#.e4.bb.80.e4.b9.88.e6.98.af.22.e8.a2.ab.e6.b1.a1.e6.9f.93.22.e7.9a.84canvas" title="污染 canvas" target="_blank"> 污染 canvas </a>。
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>使用其他 canvas 元素</h2>
+      <div>
+        <dl>          
+          <dd>用 document.getElementsByTabName 活 document.getElementById 方法来获取其他 canvas 元素。该 canvas 应该是已经准备好了的。</dd>
+          <dd>一个常用的应用就是将第二个 canvas 作为另一个大的 canvas 的缩略图。</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>绘制图片</h2>
+      <div>
+        <dl>          
+          <dt>drawImage(image, x, y)</dt>
+          <dd><strong>image</strong>：是 image 或者 canvas 对象。</dd>
+          <dd><strong>x, y</strong>：起始坐标。</dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>缩放</h2>
+      <div>
+        <dl>          
+          <dt>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage" title="drawImage(image, x, y, width, height)" target="_blank"> drawImage(image, x, y, width, height) </a>。
+          </dt>
+          <dd><strong>image</strong>：是 image 或者 canvas 对象。</dd>
+          <dd><strong>x, y</strong>：起始坐标。</dd>
+          <dd><strong>width, height</strong>：这两个参数用来控制当向 canvas 画入时应该缩放的大小。</dd>
+        </dl>
+        <canvas width="600" height="200" id="canvas2">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>切片</h2>
+      <div>
+        <dl>          
+          <dt>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage" title="drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight)" target="_blank"> drawImage(image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight) </a>。
+          </dt>
+          <dd>9个参数用于控制切片展示。</dd>
+          <dd><strong>image</strong>：是 image 或者 canvas 对象。</dd>
+          <dd><strong>sx, sy, swidth, sheight</strong>：定义裁剪源图片的哪一部分。</dd>
+          <dd><strong>dx, dy, dwidth, dheight</strong>：将前面裁剪出来的图片放到指定的位置。</dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas3">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>相框</h2>
+      <p>因为这里素材不太行，所有看不出效果, 相框应该是透明的png</p>
+      <canvas width="960" height="838" id="canvas4">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      <div style="display: none;">
+        <img id="source" src="./images/cat.jpg" width="1920px" height="1080px">
+        <img id="frame" src="./images/fram.png" style="object-fit: fill;" width="960px" height="838px">
+      </div>
+    </section>
+    <section>
+      <h2>画廊</h2>
+      <p>这里是相框，因为相框不是透明的，所以先绘制相框，然后再绘制图片，让图片在相框上面</p>
+      <table>
+        <tr>
+          <td><img src="./images/one.png" /></td>
+          <td><img src="./images/two.png" /></td>
+          <td><img src="./images/three.png" /></td>
+          <td><img src="./images/four.png" /></td>
+        </tr>
+        <tr>
+          <td><img src="./images/five.png" /></td>
+          <td><img src="./images/six.png" /></td>
+          <td><img src="./images/seven.png" /></td>
+          <td><img src="./images/eight.png" /></td>
+        </tr>
+      </table>
+      <img id="frames" src="./images/nine.png" width="132" height="150" />
+    </section>
+    <section>
+      <h2>控制图像的缩放行为</h2>
+      <dt>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled" title="imageSmoothingEnabled" target="_blank"> imageSmoothingEnabled </a>。
+      </dt>
+      <dd>控制缩放在缩放图像时使用平滑算法。默认为 true：平滑缩放。你可以设置为 false 禁用此功能。</dd>
+    </section>    
+  </body>
+  <script src="index.js"></script>
+</html>
