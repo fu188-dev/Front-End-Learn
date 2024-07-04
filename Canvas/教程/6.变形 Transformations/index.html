@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>变形 Transformations</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Transformations" title="变形 Transformations" target="_blank">变形 Transformations</a></h1>
+    <section>
+      <h2>状态的保存和恢复</h2>
+      <div>
+        <dl>
+          <dt>在了解变形之前，首先需要了解两个必不可少的方法：</dt>
+          <dd><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/save" title="save()" target="_blank">save()</a></dd>
+          <dd>保存 canvas 的所有状态。</dd>
+          <dd><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/restore" title="restore()" target="_blank">restore()</a></dd>
+          <dd>恢复 canvas 的状态。</dd>
+
+          <dt>Canvas 状态存储在栈中，每当调用 save() 方法后，当前的状态就被推送到栈中保存。一个绘画状态包括：</dt>
+          <dd>1.当前应用的变形（即异动，旋转和缩放，见下）</dd>
+          <dd>2.以及下面这些属性：
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeStyle" title="strokeStyle" target="_blank">strokeStyle，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillStyle" title="fillStyle" target="_blank">fillStyle，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalAlpha" title="globalAlpha" target="_blank">globalAlpha，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineWidth" title="lineWidth" target="_blank">lineWidth，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineCap" title="lineCap" target="_blank">lineCap，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineJoin" title="lineJoin" target="_blank">lineJoin，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/miterLimit" title="miterLimit" target="_blank">miterLimit，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineDashOffset" title="lineDashOffset" target="_blank">lineDashOffset，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowOffsetX" title="shadowOffsetX" target="_blank">shadowOffsetX，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowOffsetY" title="shadowOffsetY" target="_blank">shadowOffsetY，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowBlur" title="shadowBlur" target="_blank">shadowBlur，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowColor" title="shadowColor" target="_blank">shadowColor，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation" title="globalCompositeOperation" target="_blank">globalCompositeOperation，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/font" title="font" target="_blank">font，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/textAlign" title="textAlign" target="_blank">textAlign，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/textBaseline" title="textBaseline" target="_blank">textBaseline，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/direction" title="direction" target="_blank">direction，</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled" title="imageSmoothingEnabled" target="_blank">imageSmoothingEnabled</a>
+          </dd>
+          <dd>3.当前的
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Compositing#clipping_paths" title="裁切路径（clipping path）" target="_blank">裁切路径（clipping path）</a>
+            ，会在下一节介绍。
+          </dd>
+
+          <dd>可以任意多次调用 save 方法。</dd>
+          <dd>每一次调用 restore 方法，上一个保存的状态就从栈钟弹出，所有设定都恢复。</dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>  
+    <section>
+      <h2>移动 translate</h2>
+      <div>
+        <dl>
+          <dt>translate(x, y)</dt>
+          <dd>用来移动 canvas 和它的原点到一个不同的位置。（相当于是移动canvas，但是canvas并没有移动，只是canvas里面的原点移动了。）</dd>
+          <dd><b>x：</b>左右移动量</dd>
+          <dd><b>y：</b>上下移动量</dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas2">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>旋转 Rotating</h2>
+      <div>
+        <dl>
+          <dt>rotate(angle)</dt>
+          <dd>以原点为中心 旋转 canvas。</dd>
+          <dd><b>angle：</b>旋转的角度，顺时针方向，以弧度为单位的值。</dd>
+          <dd>旋转的中心始终是 canvas 的原点。</dd>
+          <dd>可以用 translate 方法移动原点。</dd>
+        </dl>
+        <canvas width="500" height="300" id="canvas3">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>缩放 scale</h2>
+      <div>
+        <dl>
+          <dt>scale(x, y)</dt>
+          <dd>增减图形在 canvas 中的像素数目，对形状、位图进行缩小或放大。</dd>
+          <dd>缩放画布的水平和垂直的单位。可以为负数。</dd>
+          <dd><b>x：</b>水平缩放因子。</dd>
+          <dd><b>y：</b>垂直缩放因子。</dd>
+          <dd>1.默认为 1，正常大小。</dd>
+          <dd>2.小于 1，会缩小图形。</dd>
+          <dd>3.大于 1，会放大图形。</dd>
+          <dd>4.小于 0，相当于以 x 或 y 轴对称轴镜像反转。以 y 轴作为对称轴镜像翻转，就可得到著名的笛卡尔坐标系，左下角为原点。</dd>
+          <dd>知道 css 的 scale 的小伙伴，应该很熟悉了~</dd>
+          <dd><b>注意：</b>反转是连同到 canvas 原点到图形的距离进行反转的</dd>
+        </dl>
+        <canvas width="500" height="300" id="canvas4">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>    
+    <section>
+      <h2>变形</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/transform" title="transform(a, b, c, d, e, f)" target="_blank">transform(a, b, c, d, e, f)</a></dt>
+          <dd><b>a(m11)</b>：水平方向的缩放；</dd>
+          <dd><b>b(m12)</b>：竖直方向的倾斜偏移；</dd>
+          <dd><b>c(m21)</b>：水平方向的倾斜偏移；</dd>
+          <dd><b>d(m22)</b>：竖直方向的缩放；</dd>
+          <dd><b>e(dx)</b>：水平方向的移动；</dd>
+          <dd><b>f(dy)</b>：竖直方向的移动；</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/setTransform" title="setTransform(a, b, c, d, e, f)" target="_blank">setTransform(a, b, c, d, e, f)</a></dt>
+          <dd>将当前的变形矩阵重置为单位矩阵，然后用相同的参数调用 transform 方法。</dd>
+          <dd>该方法是取消了当前变形，然后设置为指定的变形，一步完成。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/resetTransform" title="resetTransform(a, b, c, d, e, f)" target="_blank">resetTransform(a, b, c, d, e, f)</a></dt>
+          <dd>重置当前变形为单位矩形，和 ctx.setTransform(1, 0, 0, 1, 0, 0) 是一样的。</dd>
+        </dl>
+        <canvas width="500" height="300" id="canvas5">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>    
+  </body>
+  <script src="index.js"></script>
+</html>
