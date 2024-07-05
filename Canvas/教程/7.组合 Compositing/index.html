@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>组合 Compositing</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Compositing" title="组合 Compositing" target="_blank">组合 Compositing</a></h1>
+    <section>
+      <h2>globalCompositeOperation</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation" title="globalCompositeOperation = type" target="_blank">globalCompositeOperation = type</a></dt>
+          <dd>表示画新图时的遮盖策略，有 12 种。点击上方链接进行查看文档。</dd>
+        </dl>
+      </div>
+    </section>  
+    <section>
+      <h2>裁切路径</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clip" title="clip()" target="_blank">clip()</a></dt>
+          <dd>作用是遮罩，用来隐藏不需要的部分。</dd>
+          <dd>不会再 canvas 上绘制东西。</dd>
+          <dd><b>其实 canvas 默认有一个和 canvas 一样大的裁切路径，只是没有裁切效果而已。</b></dd>
+        </dl>
+        <canvas width="200" height="200" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>  
+  </body>
+  <script src="index.js"></script>
+</html>
