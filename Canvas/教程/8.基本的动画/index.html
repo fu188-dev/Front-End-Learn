@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>基本的动画</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations" title="基本的动画" target="_blank">基本的动画</a></h1>
+    <section>
+      <h2>动画的基本步骤</h2>
+      <div>
+        <dl>
+          <dd><b>1.清空 canvas。</b>除非接下来要画的内容会完全充满 canvas，否则，你需要清空所有。最简单的方法是 clearRect 方法。</dd>
+          <dd><b>2.保存 canvas状态。</b>可以养成这样的习惯，保存一下状态，方便后面回滚。</dd>
+          <dd><b>3.绘制动画图形（animated shapes）</b>这一步才是重绘动画帧。</dd>
+          <dd><b>4.恢复 canvas 状态。</b>如果已经保存了 canvas 的状态，可以先恢复它，然后重绘下一帧。</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>操控动画</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" title="setInterval(function, delay)" target="_blank">setInterval(function, delay)</a></dt>
+          <dd>设定好间隔时间后，function 会定期执行。</dd>
+          <dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout" title="setTimeout(function, delay)" target="_blank">setTimeout(function, delay)</a></dt>
+          <dd>在设定好的时间之后执行函数。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame" title="requestAnimationFrame(callback)" target="_blank">requestAnimationFrame(callback)</a></dt>
+          <dd>告诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。</dd>
+          <dd>一般用于与用户有交互的时候。</dd>
+          <dd>一般每秒执行 60 次，也可以理解成是 60 帧。</dd>
+        </dl>
+        <canvas width="300" height="300" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+    <section>
+      <h2>动画时钟</h2>
+      <div>
+        <dl>
+          <dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" title="setInterval(function, delay)" target="_blank">setInterval(function, delay)</a></dt>
+          <dd>设定好间隔时间后，function 会定期执行。</dd>
+        </dl>
+        <canvas width="300" height="300" id="canvas2">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>  
+  </body>
+  <script src="index.js"></script>
+</html>
