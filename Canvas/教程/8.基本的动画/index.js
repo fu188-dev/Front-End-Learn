@@ -1,7 +1,8 @@
 
 function draw() {
   drawSolarSystem();
-  drawClock();
+  requestAnimationFrame(drawClock);
+  drawPanorama();
 }
 
 function drawSolarSystem() {
@@ -83,16 +84,14 @@ function drawClock() {
     // 这里就可以写你想要的代码啦~~~
     const now = new Date();
     ctx.save();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.translate(canvas.width / 2, canvas.height / 2); // 移动原点
+    ctx.clearRect(0, 0, 300, 300);
+    ctx.translate(150, 150); // 移动原点
     // ctx.scale(0.8, 0.8); // 缩小
     ctx.rotate(-Math.PI / 2);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "white";
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 6;
     ctx.lineCap = "round";
-    ctx.arc(0, 0, 100, 0, Math.PI * 2);
-    ctx.stroke();
 
     // 小时刻度
     ctx.save();
@@ -109,28 +108,88 @@ function drawClock() {
     ctx.save();
     ctx.lineWidth = 4;
     for (let i = 0; i < 60; i++) {
-      ctx.beginPath();
-      ctx.moveTo(90, 0);
-      ctx.lineTo(100, 0);
-      ctx.stroke();
-      ctx.rotate((Math.PI * 2) / 60);
+      if(i % 5 !== 0) {
+        ctx.beginPath();
+        ctx.moveTo(90, 0);
+        ctx.lineTo(100, 0);
+        ctx.stroke();
+      }
+      ctx.rotate(Math.PI / 30);
     }
     ctx.restore()
 
-    const s = now.getSeconds(); // 获取当前秒数
+    // const s = now.getSeconds(); // 获取当前秒数
+    const s = now.getSeconds() + now.getMilliseconds() / 1000; // 获取当前秒数
     const m = now.getMinutes(); // 获取当前分钟数
     const h = now.getHours() % 12; // 获取当前小时数
 
     ctx.fillStyle = "black";
     // 显示图像描述
-    ctx.fillText = (`当前时间：${h}:${m}:${s}`, 10, 10);
+    ctx.fillText = (`当前时间：${h}:${m}:${s}`, 100, 100);
+    ctx.font = "48px sans-serif";
+    ctx.fill();
 
     // 时针
     ctx.save();
-    ctx.rotate();
+    ctx.rotate((Math.PI / 6) * h + (Math.PI / 360) * m + (Math.PI / 21600) * s);
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(60, 0);
+    ctx.stroke();
+    ctx.restore();
+
+    // 分针
+    ctx.save();
+    ctx.rotate((Math.PI / 30) * m + (Math.PI / 1800) * s);
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(80, 0);
+    ctx.stroke();
+    ctx.restore();
+
+    // 秒针
+    ctx.save();
+    ctx.rotate((Math.PI * s) / 30);
+    ctx.strokeStyle = "green"
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(-20, 0);
+    ctx.lineTo(90, 0);
+    ctx.stroke();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = "black"
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.arc(0, 0, 100, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+
+    requestAnimationFrame(drawClock);
 
 
   } else {
     alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
   }
 }
+function drawPanorama() {
+  // 检查支持性
+  const canvas = document.getElementById("canvas3");
+
+  if (canvas.getContext) {
+    const ctx = canvas.getContext("2d");
+    // 这里就可以写你想要的代码啦~~~
+    
+
+    
+
+  } else {
+    alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
+  }
+}
+
+
+
+
