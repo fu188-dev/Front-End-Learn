@@ -28,14 +28,33 @@
           <dd><b>imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 0/1/2/3];</b></dd>
           <dd><b>6.Uint8ClampedArray.length 属性读取像素数组的大小（以字节为单位）：</b></dd>
           <dd>const numBytes = imageData.data.length;</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>创建一个 ImageData 对象：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createImageData" title="createImageData()" target="_blank">createImageData()</a></h2>
+      <div>
+        <dl>
+          <dd>1.创建新的具体特定尺寸的 ImageData 对象。所有像素被预设为透明黑。</dd>
+          <dd>const myImageData = ctx.createImageData(width, height);</dd>
+          <dd>2.你也可以创建一个指定的图片的 ImageData 对象。</dd>
+          <dd>const myImageData = ctx.createImageData(anotherImageData);</dd>
 
-          <dt>创建一个 ImageData 对象</dt>
 
+        </dl>
+      </div>
+    </section>
+    <section>
+      <h2>得到场景像素数据<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getImageData" title="getImageData()" target="_blank">getImageData()</a></h2>
+      <div>
+        <dl>
+          <dt>const myImageData = ctx.getImageData(left, top, width, height);</dt>
+          <dd>该方法会返回一个 ImageData 对象，代表了画布区域的对象数据。</dd>
 
         </dl>
         <canvas width="300" height="300" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
       </div>
-    </section>
+    </section>        
   </body>
   <script src="index.js"></script>
 </html>
