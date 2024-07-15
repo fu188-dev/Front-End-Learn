@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            padding-top: 10px;
+        }
+        button {
+            border-radius: 4px;
+            border: none;
+            background-color: orange;
+            padding: 6px 12px;
+            color: white;
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0 0 20px 2px rgba(255, 165, 0, .3);
+        }
+        button:hover {
+            animation: junmp .3s;
+        }
+        button#save {
+            background-color: rgba(0, 255, 0, 1);
+        }
+        @keyframes junmp {
+            0% {
+                transform: rotate(0deg);
+            } 
+            25% {
+                transform: rotate(-10deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="img" crossorigin="anonymous" src="" onload="imgLoad(this)" alt="" width="50%">
+    <input type="file" onchange="fileChange(this)">
+    <button id="back">反向</button>
+    <button id="lost">去色</button>
+    <button id="opacity">滤镜（改的透明度）</button>
+    <!-- <button id="mohu">模糊</button> -->
+    <button id="save" >另存为</button>
+
+    
+    <br>
+    <div style="width:100px;height:50px" id="color"></div>
+    <div id="fix"></div>
+    <script>
+        function fileChange(e) {
+            const file = e.files[0]
+            console.log(file);
+            const src = URL.createObjectURL(file)
+            document.querySelector("#img").src = src;
+
+        }
+
+        function imgLoad(e) {
+            const canvas = document.createElement("canvas")
+            let ctx = canvas.getContext("2d")
+            let width = e.naturalWidth;
+            let height = e.naturalHeight;
+            // let showWidth = document.images[0].width;
+            // let showHieght = document.images[0].height;
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(document.images[0], 0, 0);
+            let imageData = ctx.getImageData(0, 0, width, height);
+            let data = imageData.data;
+            console.log(data);
+            let red = 0
+            let green = 0
+            let blue = 0
+            for (let i = 0; i < data.length; i += 4) {
+                let r = data[i]
+                let g = data[i + 1]
+                let b = data[i + 2]
+                // let a = data[i + 3]
+                red += r
+                green += g
+                blue += b
+            }
+            let pixels = width * height;
+            let color = `rgb(${red / pixels},${green / pixels},${blue / pixels})`;
+            document.querySelector("#color").style.backgroundColor = color;
+            // const box = document.getElementById("fix");
+            // if(box.firstChild !== null) {
+            //     box.removeChild(box.firstChild);
+            // }
+            // box.appendChild(canvas);
+
+
+            document.getElementById("back").addEventListener("click", function() {
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i] = 255 - data[i];
+                    data[i + 1] = 255 - data[i + 1];
+                    data[i + 2] = 255 - data[i + 2];
+                }
+                ctx.putImageData(imageData, 0, 0);
+                document.querySelector("#img").src = canvas.toDataURL();
+            });
+            document.getElementById("lost").addEventListener("click", function() {
+                for (let i = 0; i < data.length; i += 4) {
+                    const noneColor = (data[i] + data[i + 1] + data[i + 2]) /3;
+                    data[i] = noneColor;
+                    data[i + 1] = noneColor;
+                    data[i + 2] = noneColor;
+                }
+                ctx.putImageData(imageData, 0, 0);
+                document.querySelector("#img").src = canvas.toDataURL();
+            });
+            document.getElementById("opacity").addEventListener("click", function() {
+                for (let i = 0; i < data.length; i += 4) {
+                    data[i + 3] = 200;
+                }
+                ctx.putImageData(imageData, 0, 0);
+                document.querySelector("#img").src = canvas.toDataURL();
+            });
+            // document.getElementById("mohu").addEventListener("click", function() {
+            //     for (let i = 0; i < data.length; i += 40) {
+            //         let red = 0
+            //         let green = 0
+            //         let blue = 0
+            //         for (let j = i; j < i; j++) {
+            //             red += data[j]
+            //             green += data[j + 1]
+            //             blue += data[j + 2]
+            //         }
+            //     }
+            //     ctx.putImageData(imageData, 0, 0);
+            // });
+            document.getElementById("save").addEventListener("click", function() {
+                const a = document.createElement("a");
+                a.href = document.querySelector("#img").src;
+                a.download = "pic.png";
+                a.click();
+            });
+
+        }
+    </script>
+</body>
+</html>

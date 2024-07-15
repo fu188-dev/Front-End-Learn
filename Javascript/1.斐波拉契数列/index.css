@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: bisque;
+}
+section {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, .3);
+}
+section div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+h1 {
+  text-align: center;
+}
+dt {
+  font-weight: bold;
+}
+
+dl,
+dd {
+  font-size: 0.9em;
+}
+
+dd {
+  margin-bottom: 1em;
+  text-indent: 2em;
+}
+canvas {
+  border: 1px solid gray;
+}
+span {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+span:nth-child(1) {
+  background-color: rgb(144, 233, 55);
+}
+span:nth-child(2) {
+  background-color: rgb(55, 233, 144);
+}
+span:nth-child(3) {
+  background-color: rgb(21, 233, 1);
+}

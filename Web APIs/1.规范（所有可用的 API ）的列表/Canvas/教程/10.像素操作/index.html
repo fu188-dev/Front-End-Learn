@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>像素操作</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas" title="像素操作" target="_blank">像素操作</a></h1>
+    <section>
+      <h2><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" title="ImageData 对象" target="_blank">ImageData 对象</a></h2>
+      <div>
+        <dl>
+          <dt>ImageData 对象存储着 canvas 对象真实的像素数据，它包含以下几个只读属性：</dt>
+          <dd><b>1.width</b>：图片宽度，单位是像素</dd>
+          <dd><b>2.height</b>：图片高度，单位是像素</dd>
+          <dd>
+            <b>3.data</b>：
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray" title="Uint8ClampedArray" target="_blank">Uint8ClampedArray</a>
+            类型的一维数组，包含着 RGBA 格式的整型数据（按照红，绿，蓝，透明值顺序），范围在 0 至 255 之间（包括 255）。
+          </dd>
+          <dd>Uint8ClampedArray 包含 height * width * 4 字节数据；索引从 0 到 (height * width * 4) -1；</dd>
+          <dd>4.例如，要读取图片中位于第 50 行，第 200 列的像素的蓝色部分，这样写：</dd>
+          <dd>blueComponent = imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 2];</dd>
+          <dd><b>5.根据行、列读取某像素点的 R/G/B/A 值的公式：</b></dd>
+          <dd><b>imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 0/1/2/3];</b></dd>
+          <dd><b>6.Uint8ClampedArray.length 属性读取像素数组的大小（以字节为单位）：</b></dd>
+          <dd>const numBytes = imageData.data.length;</dd>
+
+          <dt>创建一个 ImageData 对象</dt>
+
+
+        </dl>
+        <canvas width="300" height="300" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
