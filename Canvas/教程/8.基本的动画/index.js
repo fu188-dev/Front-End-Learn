@@ -3,6 +3,7 @@ function draw() {
   drawSolarSystem();
   requestAnimationFrame(drawClock);
   drawPanorama();
+  drawMouseTracking();
 }
 
 function drawSolarSystem() {
@@ -182,8 +183,190 @@ function drawPanorama() {
     const ctx = canvas.getContext("2d");
     // 这里就可以写你想要的代码啦~~~
     
+    const img = new Image();
+    img.src = "./images/open.jpg";
+    let canvasXSize = 800;
+    let canvasYSize = 800;
+    const speed = 30;
+    const y = -4.5;
 
+    const dx = 0.75;
+    let imgW;
+    let imgH;
+    let x = 0;
+    let clearX;
+    let clearY;
+
+    img.onload = function() {
+      imgW = img.width;
+      imgH = img.height;
+
+      if(imgW > canvasXSize) {
+        x = canvasXSize - imgW;
+      };
+
+      if(imgW > canvasXSize) {
+        clearX = imgW;
+      } else {
+        clearX = canvasXSize;
+      }
+
+      if(imgH > canvasYSize) {
+        clearY = imgH;
+      } else {
+        clearY = canvasYSize;
+      }
+
+      setInterval(() => {
+        ctx.clearRect(0, 0, clearX, clearY);
+      
+        if(imgW <= canvasXSize) {
+          if(x > canvasXSize) {
+            x = -imgW + x;
+          }
+
+          if(x > 0) {
+            ctx.drawImage(img, -imgW + x, y, imgW, imgH);
+          }
+
+          if(x - imgW > 0) {
+            ctx.drawImage(img, imgW * 2 + x, y, imgW, imgH);
+          }
+        } else {
+          // reset, start from beginning
+          if (x > canvasXSize) {
+            x = canvasXSize - imgW;
+          }
+
+          // draw aditional image
+          if (x > canvasXSize - imgW) {
+            ctx.drawImage(img, x - imgW + 1, y, imgW, imgH);
+          }
+        }
+
+        ctx.drawImage(img, x, y, imgW, imgH);
+        x += dx;
+
+      }, speed);
+    };
     
+
+  } else {
+    alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
+  }
+}
+
+
+function drawMouseTracking() {
+  // 检查支持性
+  const canvas = document.getElementById("canvas4");
+
+  if (canvas.getContext) {
+    const ctx = canvas.getContext("2d");
+    // 这里就可以写你想要的代码啦~~~
+    
+    let cn;
+    let u = 10;
+    // 鼠标的坐标点
+    const m = {
+      x: innerWidth / 2,
+      y: innerHeight / 2,
+    };
+
+    // 设置鼠标坐标点
+    window.onmousemove = function(e) {
+      m.x = e.clientX;
+      m.y = e.clientY;
+    };
+
+    // 返回一个随机十六进制颜色值
+    function gc() {
+      let s = "0123456789ABCDEF"; // 十六进制
+      let c = "#"; // 十六进制
+      for (let i = 0; i < 6; i++) {
+        // Math.ceil()：向上取整；
+        c += s[Math.ceil(Math.random() * 15)]; // 小于或等于 15 的整数
+      }
+      return c;
+    }
+
+    const a = [];
+    for (let i = 0; i < 10; i++) {
+      let r = 30;
+      let x = Math.random() * (innerWidth - 2 * r) + r;
+      let y = Math.random() * (innerHeight - 2 * r) + r;
+      let t = new ob(
+        innerWidth / 2, innerHeight / 2, 5 ,"red", Math.random() * 200 + 20, 2
+      );
+      a.push(t);
+    }
+
+    ctx.lineWidth = 2;
+    ctx.globalAlpha = 0.5;
+
+    resize();
+    anim();
+
+    window.onresize = function() {
+      resize();
+    }
+
+    function resize() {
+      canvas.height = innerHeight;
+      canvas.width = innerWidth;
+      for (let i = 0; i < 101; i++) {
+        let r = 30;
+        let x = Math.random() * (innerWidth - 2 * r) + r;
+        let y = Math.random() * (innerHeight - 2 * r) + r;
+        a[i] = new ob(
+          innerWidth / 2,
+          innerHeight / 2,
+          4,
+          gc(),
+          Math.random() * 200 + 20,
+          0.02,
+        );
+      }
+    }
+    function ob(x, y, r, cc, o, s) {
+      this.x = x;
+      this.y = y;
+      this.r = r;
+      this.cc = cc;
+      this.o = o;
+      this.s = s;
+      this.theta = Math.random() * Math.PI * 2;
+      this.t = Math.random() * 150;
+
+      this.dr = function() {
+        const ls = {
+          x: this.x,
+          y: this.y,
+        };
+
+        this.theta += this.s;
+        this.x = m.x + Math.cos(this.theta) * this.t;
+        this.y = m.y + Math.sin(this.theta) * this.t;
+        ctx.beginPath();
+        ctx.lineWidth = this.r;
+        ctx.strokeStyle = this.cc;
+        ctx.moveTo(ls.x, ls.y);
+        ctx.lineTo(this.x, this.y);
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+
+    }
+    function anim() {
+      requestAnimationFrame(anim);
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      a.forEach(function (e, i) {
+        e.dr();
+      });
+    }
+
 
   } else {
     alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
