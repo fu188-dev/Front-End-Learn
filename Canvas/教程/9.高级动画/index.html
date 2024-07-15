@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>高级动画</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Advanced_animations" title="高级动画" target="_blank">高级动画</a></h1>
+    <section>
+      <h2>绘制小球</h2>
+      <div>
+        <dl>
+          <dt>边界（边界碰撞检测）</dt>
+          <dd>if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {</dd>
+          <dd>ball.vy = -ball.vy;</dd>
+          <dd>}</dd>
+          <dd>if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {</dd>
+          <dd>ball.vx = -ball.vx;</dd>
+          <dd>}</dd>
+
+          <dt>加速度</dt>
+          <dd>ball.vy *= 0.99;</dd>
+          <dd>ball.vy += 0.25;</dd>
+
+          <dt>长尾效果</dt>
+          <dd>用半透明的 fillRect 函数取而代之，就可以制作长尾效果了。</dd>
+          <dd>ctx.fillStyle = "rgba(255,255,255,0.3)";</dd>
+          <dd>ctx.fillRect(0, 0, canvas.width, canvas.height);</dd>
+        </dl>
+        <canvas width="300" height="300" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+      </div>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
