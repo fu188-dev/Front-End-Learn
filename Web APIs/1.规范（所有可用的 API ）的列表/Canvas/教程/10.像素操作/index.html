@@ -50,11 +50,63 @@
         <dl>
           <dt>const myImageData = ctx.getImageData(left, top, width, height);</dt>
           <dd>该方法会返回一个 ImageData 对象，代表了画布区域的对象数据。</dd>
+          <dd>四个角落分别表示为（left，top）（left + width，top）（left，top + height）（left + width，top + height）</dd>
 
         </dl>
-        <canvas width="300" height="300" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <canvas width="800" height="400" id="canvas">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <p class="hover-color"></p>
+        <p class="selected-color"></p>
       </div>
     </section>        
+    <section>
+      <h2>在场景中写入像素数据<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData" title="putImageData()" target="_blank">putImageData()</a></h2>
+      <div>
+        <dl>
+          <dt>ctx.putImageData(myImageData, dx, dy);</dt>
+          <dd>dx, dy 表示你希望在场景内左上角绘制的像素数据所得到的设备坐标。</dd>
+
+        </dl>
+        <canvas width="1000" height="500" id="canvas2">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <button class="reset">还原</button>
+        <button class="gray">灰度</button>
+        <button class="reverse">反向</button>
+        <button class="masking">遮罩</button>
+      </div>
+    </section>
+    <section>
+      <h2>缩放和反锯齿<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled" title="imageSmoothingEnabled" target="_blank">imageSmoothingEnabled</a></h2>
+      <div>
+        <dl>
+          <dt>在 drawImage() 方法，第二个画布和 imageSmoothingEnabled 属性的帮助下，我们可以放大显示我们的图片以及看到详情内容。</dt>
+          <dd>反锯齿默认是启用的。</dd>
+        </dl>
+        <canvas width="1000" height="500" id="canvas3">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <canvas width="500" height="250" id="canvas4">你的浏览器不支持 canvas，请更换浏览器使用。</canvas>
+        <label for="smoothbtn">
+          <input type="checkbox" name="smoothbtn" checked="checked" id="smoothbtn" />
+          反锯齿
+        </label>
+      </div>
+    </section>
+    <section>
+      <h2>保存图片</h2>
+      <div>
+        <dl>
+          <dt>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement" title="HTMLCanvasElement" target="_blank">HTMLCanvasElement</a>
+            提供一个 toDataURL() 方法，此方法在保存图片的时候非常有用。它返回一个包含被类型参数规定的图像
+            表现格式的
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs" title="数据链接" target="_blank">数据链接</a>。
+            返回的图片分辨率是 96 dpi。
+          </dt>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL" title="canvas.toDataURL('image/png')" target="_blank">canvas.toDataURL("image/png")</a></dt>
+          <dd>默认设定。创建一个 PNG 图片。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL" title="canvas.toDataURL('image/jpeg', quality)" target="_blank">canvas.toDataURL('image/jpeg', quality)</a></dt>
+          <dd>创建一个 JPG 图片。quality表示图片质量。0~1，1表示好品质；0表示差品质，文件很小。</dd>
+          <dt><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toBlob" title="canvas.toBlob(callback, type, encoderOptions)" target="_blank">canvas.toBlob(callback, type, encoderOptions)</a></dt>
+          <dd>这个创建了一个在画布中的代表图片的 Blob 对象。</dd>
+        </dl>
+    </section>
   </body>
   <script src="index.js"></script>
 </html>
