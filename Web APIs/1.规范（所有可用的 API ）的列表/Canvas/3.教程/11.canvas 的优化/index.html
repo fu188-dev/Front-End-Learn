@@ -13,6 +13,7 @@
       <h2>1.在离屏 canvas 上预渲染相似的图形或重复的对象</h2>
       <div>
         <dl>
+          <dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas" title="OffscreenCanvas" target="_blank">OffscreenCanvas</a></dt>
           <dd>
             如果发现在每个动画帧上重复了一些相同的绘制操作，请考虑将其
             <b>分流到屏幕外的画布上</b>。然后，你可以根据需要频繁地将屏幕外图像渲染到主画布上，而不必首先重复生成该图像的步骤。
@@ -26,7 +27,108 @@
             myEntity.render(myEntity.offscreenContext);
             
           </pre>
+        </dl>
       </div>
+
+      <h2>2.避免浮点数的坐标点，用整数取而代之</h2>
+      <div>
+        <dl>
+          <dd>当你画一个没有整数坐标点的对象时，会发生子像素渲染。</dd>
+          <dd>浏览器为了达到抗锯齿效果会做额外的运算。为了避免这种情况，请保证在你调用 drawImage() 函数时，<b>用 Math.floor() 函数对所有的坐标点取整</b>。</dd>
+        </dl>
+      </div>
+
+      <h2>3.不要在用 drawImage 时缩放图像</h2>
+      <div>
+        <dl>
+          <dd>在离屏 canvas 中缓存图片的不同尺寸，而<b>不要用 </b>drawImage() 去缩放它们。</dd>
+        </dl>
+      </div>
+
+      <h2>4.使用多层画布去画一个复杂的场景</h2>
+      <div>
+        <dl>
+          <dd>在你的应用程序中，你可能会发现某些对象需要经常移动或更改，而其他对象则保持相对静态。在这种情况下，可能的优化是使用多个 &lt;canvas&gt; 元素对你的项目进行分层。</dd>
+          <dd>例如，你有一个游戏，其 UI 位于顶部，中间是游戏性动作，底部是静态背景。在这种情况下，你可以将游戏分成三个 &lt;canvas&gt; 层。UI 将仅在用户输入时发生变化，游戏层随每个新框架发生变化，并且背景通常保持不变。</dd>
+          <pre>
+            &lt;div id="stage"&gt;
+              &lt;canvas id="ui-layer" width="480" height="320"&gt;&lt;/canvas&gt;
+              &lt;canvas id="game-layer" width="480" height="320"&gt;&lt;/canvas&gt;
+              &lt;canvas id="background-layer" width="480" height="320"&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+            
+            &lt;style&gt;
+              #stage {
+                width: 480px;
+                height: 320px;
+                position: relative;
+                border: 2px solid black;
+              }
+              canvas {
+                position: absolute;
+              }
+              #ui-layer {
+                z-index: 3;
+              }
+              #game-layer {
+                z-index: 2;
+              }
+              #background-layer {
+                z-index: 1;
+              }
+            &lt;/style&gt;
+            
+          </pre>
+        </dl>
+      </div>
+
+      <h2>5.用 CSS 设置大的背景图</h2>
+      <div>
+        <dl>
+          <dd>如果是像游戏那样，背景不用动，那么就可以用 div 元素，设置 background 图片，然后将它放到画布元素之后，这样就可以避免每一帧都要绘制大图了。</dd>
+        </dl>
+      </div>
+
+      <h2>6.用 CSS 变换特性缩放画布</h2>
+      <div>
+        <dl>
+          <dd>CSS 变换使用 GPU，所以速度更快。</dd>
+          <pre>
+            var scaleX = window.innerWidth / canvas.width;
+            var scaleY = window.innerHeight / canvas.height;
+
+            var scaleToFit = Math.min(scaleX, scaleY);
+            var scaleToCover = Math.max(scaleX, scaleY);
+
+            stage.style.transformOrigin = "0 0"; //scale from top left
+            stage.style.transform = "scale(" + scaleToFit + ")";
+
+          </pre>
+        </dl>
+      </div>
+
+      <h2>7.关闭透明度</h2>
+      <div>
+        <dl>
+          <dd>如果你的游戏使用画布而且<b>不需要透明</b>，当使用 HTMLCanvasElement.getContext() 创建一个绘图上下文时，<b>把 alpha 选项设置为 false。这个选项可以帮助浏览器进行内部优化。</b></dd>
+        </dl>
+      </div>
+
+      <h2>8.更多的贴士</h2>
+      <div>
+        <dl>
+          <dd>*将画布的函数调用集合到一起（例如，画一条折线，而不要画多条分开的直线）；</dd>
+          <dd>*避免不必要的画布状态改变；</dd>
+          <dd>*渲染画布中的不同点，而非整个新状态；</dd>
+          <dd>*尽可能避免 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/shadowBlur" title="shadowBlur" target="_blank">shadowBlur</a> 特性；</dd>
+          <dd>*尽可能避免 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Drawing_text" title="text rendering" target="_blank">text rendering</a></dd>
+          <dd>*尝试不同的方法来清除画布（clearRect() vs fillRect() vs 调整 canvas 大小）；</dd>
+          <dd>*有动画，请使用 window.requestAnimationFrame() 而非 window.setInterval()；</dd>
+          <dd>*请谨慎使用大型物理库。</dd>
+        </dl>
+      </div>
+
+
     </section>
   </body>
   <script src="index.js"></script>
