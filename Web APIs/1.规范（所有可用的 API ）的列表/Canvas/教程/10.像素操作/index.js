@@ -71,6 +71,8 @@ function drawUpdatePic() {
     const grayBtn = document.querySelector(".gray");
     const reverseBtn = document.querySelector(".reverse");
     const maskingBtn = document.querySelector(".masking");
+    const savegBtn = document.querySelector(".save");
+    
 
     // 还原
     resetBtn.addEventListener("click", function() {
@@ -119,7 +121,15 @@ function drawUpdatePic() {
       }
       ctx.putImageData(imageData, 0, 0);
     });
-    
+
+    // 保存
+    savegBtn.addEventListener("click", function() {
+      const url = canvas.toDataURL();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pic.png";
+      a.click();
+    });
   } else {
     alert("你的浏览器不支持 canvas，请更换浏览器再使用。");
   }
@@ -165,8 +175,8 @@ function drawMagnifier() {
         100, // canvas 裁剪的高度
         0, // 需要将 canvas 绘制到目标 canvas 的 x 轴坐标点
         0, // 需要将 canvas 绘制到目标 canvas 的 y 轴坐标点
-        500, // 需要将 canvas 绘制到目标 canvas 的宽度。如果裁剪的宽度小于实际绘制的宽度，将会放大；如果裁剪的宽度大于实际绘制的宽度，将会缩小；相等则不变；
-        250, // 需要将 canvas 绘制到目标 canvas 的高度度。如果裁剪的高度小于实际绘制的高度，将会放大；如果裁剪的高度大于实际绘制的高度，将会缩小；相等则不变；
+        200, // 需要将 canvas 绘制到目标 canvas 的宽度。如果裁剪的宽度小于实际绘制的宽度，将会放大；如果裁剪的宽度大于实际绘制的宽度，将会缩小；相等则不变；
+        200, // 需要将 canvas 绘制到目标 canvas 的高度度。如果裁剪的高度小于实际绘制的高度，将会放大；如果裁剪的高度大于实际绘制的高度，将会缩小；相等则不变；
       );
     });
 
