@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>canvas 的优化</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas" title="canvas 的优化" target="_blank">canvas 的优化</a></h1>
+    <section>
+      <h2>1.在离屏 canvas 上预渲染相似的图形或重复的对象</h2>
+      <div>
+        <dl>
+          <dd>
+            如果发现在每个动画帧上重复了一些相同的绘制操作，请考虑将其
+            <b>分流到屏幕外的画布上</b>。然后，你可以根据需要频繁地将屏幕外图像渲染到主画布上，而不必首先重复生成该图像的步骤。
+          </dd>
+          <pre>
+            myEntity.offscreenCanvas = document.createElement("canvas");
+            myEntity.offscreenCanvas.width = myEntity.width;
+            myEntity.offscreenCanvas.height = myEntity.heigth;
+            myEntity.offscreenContext = myEntity.offscreenCanvas.getContext("2d");
+
+            myEntity.render(myEntity.offscreenContext);
+            
+          </pre>
+      </div>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>

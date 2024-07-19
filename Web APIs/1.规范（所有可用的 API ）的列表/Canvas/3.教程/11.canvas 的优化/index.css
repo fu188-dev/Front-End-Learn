@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: bisque;
+}
+section {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, .3);
+}
+section div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+h1 {
+  text-align: center;
+}
+dt {
+  font-weight: bold;
+}
+
+dl,
+dd {
+  font-size: 0.9em;
+}
+
+dd {
+  margin-bottom: 1em;
+  text-indent: 2em;
+}
+canvas {
+  border: 1px solid gray;
+}
+
+
