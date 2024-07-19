@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>width</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/width" title="width" target="_blank">width</a></h1>
+    <p>设置或获取离屏 canvas OffscreenCanvas 对象的宽度。</p>
+    <section>
+      <h2>语法</h2>
+      <pre style="text-indent: 2rem;">const pxl = offscreen.width;</pre>
+      <pre style="text-indent: 2rem;">offscreen.width = pxl;</pre>
+
+      <h2>示例</h2>
+      <dl style="text-indent: 2rem;">
+        <dt>创建一个离屏 Canvas，获取或设置离屏 canvas 的宽度：</dt>
+        <pre style="text-indent: 4rem;">const offscreen = new OffscreenCanvas(200, 200);</pre>
+        <pre style="text-indent: 4rem;">offscreen.width; // 200</pre>
+        <pre style="text-indent: 4rem;">offscreen.width = 300; // 300</pre>
+      </dl>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>

@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <title>OffscreenCanvas()</title>
+  </head>
+  <body onload="draw()">
+    <h1><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/OffscreenCanvas/OffscreenCanvas" title="OffscreenCanvas()" target="_blank">OffscreenCanvas()</a></h1>
+    <section>
+      <h2>语法</h2>
+      <pre style="text-indent: 2rem;">new OffscreenCanvas(width, height);</pre>
+
+      <h2>参数</h2>
+      <dl style="text-indent: 2rem;">
+        <dt>width</dt>
+        <dd style="text-indent: 4rem;">离屏 canvas 的高度。</dd>
+        <dt>height</dt>
+        <dd style="text-indent: 4rem;">离屏 canvas 的宽度。</dd>
+      </dl>
+
+      <h2>示例</h2>
+      <dl style="text-indent: 2rem;">
+        <dt>创建一个离屏 Canvas 并且初始一个 2d 上下文。</dt>
+        <pre style="text-indent: 4rem;">const offscreen = new OffscreenCanvas(200, 200);</pre>
+        <pre style="text-indent: 4rem;">const offctx = offscreen.getContext("2d");</pre>
+      </dl>
+    </section>
+  </body>
+  <script src="index.js"></script>
+</html>
