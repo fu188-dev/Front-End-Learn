@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/nodejs-with-typescript/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/nodejs-with-typescript
 // Typescript 文档：https://www.typescriptlang.org/
 // npx 文档：https://www.npmjs.com/package/npx
 

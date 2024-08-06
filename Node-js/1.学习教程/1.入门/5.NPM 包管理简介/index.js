@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/an-introduction-to-the-npm-package-manager/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/an-introduction-to-the-npm-package-manager
 // NPM 文档：https://docs.npmjs.com/
 // Yarn 文档：https://yarnpkg.com/en/
 // pnpm 文档：https://pnpm.io/

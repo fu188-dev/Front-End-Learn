@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/ecmascript-2015-es6-and-beyond/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/ecmascript-2015-es6-and-beyond
 // 各版本对 ECMScript 的支持情况表：https://node.green/
 
 

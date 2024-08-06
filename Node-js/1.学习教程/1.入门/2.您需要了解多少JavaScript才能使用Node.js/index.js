@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/how-much-javascript-do-you-need-to-know-to-use-nodejs/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/how-much-javascript-do-you-need-to-know-to-use-nodejs
 
 // 需要学习如下知识
 // 学了下面这些知识之后，你就可以成为一名精通浏览器和 Node.js 的 JavaScript 开发人员了。

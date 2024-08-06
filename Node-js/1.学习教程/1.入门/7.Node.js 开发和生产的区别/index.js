@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/nodejs-the-difference-between-development-and-production/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/nodejs-the-difference-between-development-and-production
 
 
 

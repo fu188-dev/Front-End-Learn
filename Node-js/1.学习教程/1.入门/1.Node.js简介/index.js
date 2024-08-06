@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/
+// 文档地址：https://nodejs.cn/en/learn
 
 // Node.js 是开源的；
 // Node.js 是跨平台的 JavaScript 运行时环境；
@@ -10,19 +10,34 @@
 // 常见的 Hello World 示例
 // 1.复制粘贴下面代码，然后保存为 server.js 文件
 // 2.然后终端中执行 node server.js
-const http = require("http");
 
+// const http = require("http");
+
+// const hostname = "127.0.0.1";
+// const port = "9999";
+
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader("Content-Type", "text/plain");
+//   res.end("Hello world\n");
+// });
+
+// server.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`)
+// })
+
+const { createServer } = require("node:http");
 const hostname = "127.0.0.1";
-const port = "9999";
+const port = 9999;
 
-const server = http.createServer((req, res) => {
+const server = createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/plain");
-  res.end("Hello world\n");
+  res.end("Hello World!");
 });
 
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
+  console.log(`Server running at http://${hostname}:${port}`);
 })
 
 // 上面的示例用到了 Node.js 的 http 模块。

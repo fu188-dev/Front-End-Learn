@@ -1,4 +1,4 @@
-// 文档地址：https://nodejs.p2hp.com/learn/nodejs-with-webassembly/
+// 文档地址：https://nodejs.cn/en/learn/getting-started/nodejs-with-webassembly
 // WebAssembly 文档：https://webassembly.org/
 
 
